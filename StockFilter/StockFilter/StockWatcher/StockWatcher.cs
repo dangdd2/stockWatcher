@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using System.Windows.Forms;
 using Common;
 using Newtonsoft.Json;
@@ -31,18 +33,21 @@ namespace StockWatcher
 
             var intradayItems = fireAntClient.GetIntraday(symbol);
             intradayItems.Reverse();
-            const string delimiter = "             ";
-            const string splitBar = "-------------------";
-            var pricing = intradayItems.Select(current => splitBar + Environment.NewLine +
-                                                           DateTime.Parse(current.Date).ToString("HH:mm:ss") + delimiter + current.Price + delimiter + current.Volume + delimiter + (current.Side ?? "M/B"))
-                                        .Aggregate((current, next) => current + Environment.NewLine + next);
-           
-            txtPricingQuotes.Text = pricing;
+            //DateTime.Parse(current.Date).ToString("HH:mm:ss")
+            var pricing = intradayItems.Select(current => new
+            {
+                Date = DateTime.Parse(current.Date).ToString("HH:mm:ss"),
+                Price = current.Price,
+                Volumne= current.Volume,
+                Side = current.Side
+            }).ToList();
+
+            dataGridView1.DataSource = pricing;
 
             IntraDayQuotes latestPrice = intradayItems.First();
 
             var currentPrice = latestPrice.Price;
-            var jsonBody = JsonConvert.SerializeObject(latestPrice, Formatting.Indented);
+            var jsonBody = PopulateDetailStockPring(latestPrice);
             // check price to BUY 
             if (currentPrice <= float.Parse(txtPriceToBuy.Text))
             {
@@ -68,6 +73,22 @@ namespace StockWatcher
 
                 DisableTimer();
             }
+        }
+
+
+
+        private static string PopulateDetailStockPring(IntraDayQuotes latestPrice)
+        {
+            var str = new StringBuilder();
+
+            str.Append($"<p>Time : {DateTime.Parse(latestPrice.Date).ToString("HH:mm:ss")}</p>");
+            str.Append($"<p>Price : {latestPrice.Price}</p>");
+            str.Append($"<p>Volume : {latestPrice.Volume}</p>");
+            str.Append($"<p>Side : {latestPrice.Side}</p>");
+            str.Append($"<p>TotalVolume : {latestPrice.TotalVolume}</p>");
+
+
+            return str.ToString();
         }
 
         private void btnStart_Click(object sender, EventArgs e)

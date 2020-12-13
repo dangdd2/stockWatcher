@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.txtPricingQuotes = new System.Windows.Forms.TextBox();
             this.Symbol = new System.Windows.Forms.Label();
             this.txtSymbol = new System.Windows.Forms.TextBox();
             this.btnStart = new System.Windows.Forms.Button();
@@ -45,21 +44,14 @@
             this.txtLogging = new System.Windows.Forms.TextBox();
             this.txtEmail2 = new System.Windows.Forms.TextBox();
             this.txtEmail3 = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
             // 
             this.timer1.Interval = 2000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // txtPricingQuotes
-            // 
-            this.txtPricingQuotes.Location = new System.Drawing.Point(23, 324);
-            this.txtPricingQuotes.Multiline = true;
-            this.txtPricingQuotes.Name = "txtPricingQuotes";
-            this.txtPricingQuotes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtPricingQuotes.Size = new System.Drawing.Size(821, 286);
-            this.txtPricingQuotes.TabIndex = 0;
             // 
             // Symbol
             // 
@@ -187,11 +179,22 @@
             this.txtEmail3.TabIndex = 2;
             this.txtEmail3.Text = "dangdd2@gmail.com";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(23, 338);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(821, 279);
+            this.dataGridView1.TabIndex = 5;
+            // 
             // StockWatcher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(876, 852);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.chkSendNotification);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnStart);
@@ -206,10 +209,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Symbol);
             this.Controls.Add(this.txtLogging);
-            this.Controls.Add(this.txtPricingQuotes);
             this.Name = "StockWatcher";
             this.Text = "Stock Watcher";
             this.Load += new System.EventHandler(this.StockWatcher_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,7 +221,6 @@
         #endregion
 
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.TextBox txtPricingQuotes;
         private System.Windows.Forms.Label Symbol;
         private System.Windows.Forms.TextBox txtSymbol;
         private System.Windows.Forms.Button btnStart;
@@ -233,6 +235,7 @@
         private System.Windows.Forms.TextBox txtLogging;
         private System.Windows.Forms.TextBox txtEmail2;
         private System.Windows.Forms.TextBox txtEmail3;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 
