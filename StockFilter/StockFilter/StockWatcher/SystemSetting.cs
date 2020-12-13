@@ -14,5 +14,10 @@ namespace StockWatcher
         public static string SenderEmail = "dang-dd@outlook.com";
 
         public static int TimerInterval = 2000;
+
+        public static string Email1 = "dang.dang@episerver.com";
+
+        public static string Email2 = "dangdd2@yahoo.com.vn";
+
     }
 }

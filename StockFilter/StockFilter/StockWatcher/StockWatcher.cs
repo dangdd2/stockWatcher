@@ -33,7 +33,7 @@ namespace StockWatcher
 
             var intradayItems = fireAntClient.GetIntraday(symbol);
             intradayItems.Reverse();
-            //DateTime.Parse(current.Date).ToString("HH:mm:ss")
+           
             var pricing = intradayItems.Select(current => new
             {
                 Date = DateTime.Parse(current.Date).ToString("HH:mm:ss"),
