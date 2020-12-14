@@ -113,7 +113,7 @@
             this.txtPriceToSell.Name = "txtPriceToSell";
             this.txtPriceToSell.Size = new System.Drawing.Size(377, 22);
             this.txtPriceToSell.TabIndex = 2;
-            this.txtPriceToSell.Text = "28700";
+            this.txtPriceToSell.Text = "30000";
             // 
             // label2
             // 
@@ -177,7 +177,6 @@
             this.txtEmail3.Name = "txtEmail3";
             this.txtEmail3.Size = new System.Drawing.Size(694, 22);
             this.txtEmail3.TabIndex = 2;
-            this.txtEmail3.Text = "dangdd2@gmail.com";
             // 
             // dataGridView1
             // 

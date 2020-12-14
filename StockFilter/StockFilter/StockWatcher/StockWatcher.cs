@@ -28,7 +28,7 @@ namespace StockWatcher
         {
             var cache = new JsonSerializer();
             var fireAntClient = new FireAntClient(cache, new ErrorLogger());
-            var data = new List<StockItem>();
+           
             string symbol = txtSymbol.Text;
 
             var intradayItems = fireAntClient.GetIntraday(symbol);
@@ -39,10 +39,16 @@ namespace StockWatcher
                 Date = DateTime.Parse(current.Date).ToString("HH:mm:ss"),
                 Price = current.Price,
                 Volumne= current.Volume,
-                Side = current.Side
+                Side = GetSideText(current.Side)
             }).ToList();
 
             dataGridView1.DataSource = pricing;
+            
+            if (!pricing.Any())
+            {
+                
+                return;
+            }
 
             IntraDayQuotes latestPrice = intradayItems.First();
 
@@ -142,6 +148,13 @@ namespace StockWatcher
 
         #endregion
 
-        
+        private static string GetSideText(string s)
+        {
+            if (string.IsNullOrEmpty(s)) return "M/B";
+            if (s == "S") return "BÁN";
+            if (s == "B") return "MUA";
+
+            return string.Empty;
+        }
     }
 }
