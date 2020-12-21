@@ -53,6 +53,10 @@ namespace StockWatcher
             IntraDayQuotes latestPrice = intradayItems.First();
 
             var currentPrice = latestPrice.Price;
+
+            txtLogging.AppendText($"{DateTime.Now.ToString()} - Total Volume : {latestPrice.TotalVolume}" + Environment.NewLine);
+
+
             var jsonBody = PopulateDetailStockPring(latestPrice);
             // check price to BUY 
             if (currentPrice <= float.Parse(txtPriceToBuy.Text))

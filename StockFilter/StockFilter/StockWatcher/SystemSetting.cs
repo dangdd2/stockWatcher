@@ -19,5 +19,10 @@ namespace StockWatcher
 
         public static string Email2 = "dangdd2@yahoo.com.vn";
 
+        public static string Symbol = "SZC";
+
+
+
+
     }
 }
